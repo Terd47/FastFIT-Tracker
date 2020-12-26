@@ -1,21 +1,26 @@
 const express = require("express");
-const path = require("path");
-const logger = require("logger");
-const mongoose = require("moongoose");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 
-const app = express();
+
 const PORT = process.env.PORT || 3000;
 
+const app = express();
 app.use(logger("dev"));
-app.use(express.urlencoded({ extended: true}));
+
+
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname + "/public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fastFIT", { useNewUrlParser: true});
+app.use(express.static("public"));
 
-require("./routes/html-routes")(app);
-require("./routes/api-routes")(app);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fastFIT", { useNewUrlParser: true, });
+
+app.use(require("./routes/api-routes.js"));
+require("./routes/html-routes.js")(app);
 
 app.listen(PORT, () => {
-    console.log(`FastFIT App listening on port ${PORT} !`);
-})
+  console.log(`FastFit App running on port ${PORT}!`);
+});
+

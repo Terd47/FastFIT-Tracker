@@ -3,7 +3,7 @@ This is a fitness tracker application which helps a user keep track of their dai
 
 [FastFIT Repository](https://github.com/Terd47/FastFIT-Tracker)
 
-[FastFIT Live Site](https://github.com/Terd47/FastFIT-Tracker)
+[FastFIT Live Site](https://sheltered-river-39169.herokuapp.com/)
 
 ## Techonologies used
 - HTML
